@@ -181,12 +181,10 @@ def run():
         logits, train_op, loss = optimize(decoder_out, correct_labels, learning_rate, num_classes)
 
 
-        train_nn(sess, 10, batch_sz, get_batches_fn, train_op, loss, vgg_input,
+        train_nn(sess, 100, batch_sz, get_batches_fn, train_op, loss, vgg_input,
              correct_labels, vgg_keep_prob, learning_rate)
 
-        #img_shape = (int(vgg_input.shape[2]), int(vgg_input.shape[1]))
-        img_shape = (1242, 375)
-        helper.save_inference_samples(runs_dir, data_dir, sess, img_shape, logits, vgg_keep_prob, vgg_input)
+        helper.save_inference_samples(runs_dir, data_dir, sess, image_shape, logits, vgg_keep_prob, vgg_input)
 
         # OPTIONAL: Apply the trained model to a video
 
